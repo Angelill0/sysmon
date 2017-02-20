@@ -1,8 +1,12 @@
-## Sysmon configuration used wtih Splunk  to detect malicious PowerShell 
-More info: 
+## Sysmon configuration used with Splunk to detect malicious PowerShell commands
+
+http://blog.angelalonso.es/2017/02/hunting-malicious-behaviour-abusing.html
+
+## It also detected mimkatz launched through PowerShell
 
 http://blog.angelalonso.es/2017/02/detecting-mimikatz-launched-by.html
-http://blog.angelalonso.es/2017/02/hunting-malicious-behaviour-abusing.html
+
+
 
 The template file is from   @SwiftOnSecurity
 https://github.com/SwiftOnSecurity/sysmon-config/blob/master/sysmonconfig-export.xml
