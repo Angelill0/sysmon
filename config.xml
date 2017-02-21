@@ -82,8 +82,9 @@
 		</FileCreateTime>
 
 	<!--SYSMON EVENT ID 3 : NETWORK CONNECTION INITIATED -->
-		<NetworkConnect onmatch="include">
-		<!--COMMENT:	Takes a very conservative approach to network logging.-->
+
+	<NetworkConnect onmatch="include">
+		<!--COMMENT:	Takes a very conservative approach to network logging, limit to extremely high-signal events.-->
 			<!--Suspicious sources-->
 			<Image condition="begin with">C:\Users</Image>
 			<Image condition="begin with">C:\ProgramData</Image>
@@ -96,15 +97,10 @@
 			<Image condition="image">rundll32.exe</Image> <!--Microsoft:Windows: [ https://blog.cobaltstrike.com/2016/07/22/why-is-rundll32-exe-connecting-to-the-internet/ ] -->
 			<Image condition="image">notepad.exe</Image> <!--Microsoft:Windows: [ https://blog.cobaltstrike.com/2013/08/08/why-is-notepad-exe-connecting-to-the-internet/ ] -->
 			<Image condition="image">regsvr32.exe</Image> <!--Microsoft:Windows: [ https://subt0x10.blogspot.com/2016/04/bypass-application-whitelisting-script.html ] -->
-			<!--Suspicious destinations-->
-			<DestinationHostname condition="is">api.ipify.org</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">whatismyipaddress.com</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">edns.ip-api.com</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">checkip.dyndns.org</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">icanhazip.com</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">ifconfig.me</DestinationHostname> <!--Malware uses to get external IP address-->
-			<DestinationHostname condition="is">ifconfig.co</DestinationHostname> <!--Malware uses to get external IP address-->
+			<!--Hack tools hosting-->
+		
 		</NetworkConnect>
+		
 		<NetworkConnect onmatch="exclude">
 			<Image condition="image">Spotify.exe</Image> <!--Spotify-->
 			<Image condition="image">OneDrive.exe</Image> <!--Microsoft:OneDrive-->
@@ -112,6 +108,7 @@
 			<DestinationHostname condition="end with">microsoft.com.akadns.net</DestinationHostname> <!--Microsoft:Update delivery-->
 			<DestinationHostname condition="end with">microsoft.com.nsatc.net</DestinationHostname> <!--Microsoft:Update delivery-->
 		</NetworkConnect>
+
 
 	<!--SYSMON EVENT ID 4 : RESERVED FOR SYSMON STATUS MESSAGES, THIS LINE IS INCLUDED FOR DOCUMENTATION PURPOSES ONLY -->
 
